@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Workshop Form
+    </title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="workshopformcss.css">
+
+    </head>
+
+<body>
+    <header>
+        <h1>National Workshop on Web Technology</h1>
+    </header>
+    <form class="workshop-form">
+        <div class="form-head">
+            <h3 class="form-title">
+                Registration Form
+            </h3>
+        </div>
+    <div class="form-body">
+        <div class="names">
+           <div class="fnames"> <input type="text" placeholder="First Name" id="fname"></div>
+            <div class="lnames"><input type="text" placeholder="Last Name" id="lname"></div>
+        </div>
+        <div class="emailinfo">
+            <input type="email" placeholder="E-mail" id="email">
+        </div>
+        <div class="mobileinfo">
+            <input type="number" placeholder="Mobile Number" id="mno">
+        </div>
+        <div class="profinfo">
+            <p>Proffession</p>
+            <input type="radio" id="Proffession" name="student" value="student">
+            <label for="student">Student</label><br>
+            <input type="radio" name="Faculty" id="Proffession" value="faculty">
+            <label for="faculty">Faculty</label><br>
+            <input type="radio" name="proffessional" id="Proffession" value="proffessional">
+            <label for="proffessional">Proffessional</label><br>
+            <input type="radio" name="companyrepresentative" id="Proffession" value="cr">
+            <label for="cr">Company Representative</label>
+        </div>
+        <div class="submitbutton">
+            <button type="submit" value="submit" onsubmit="getdata()">Submit</button>
+        </div>
+    </div>
+</form>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAYUKcztLAmjlFxugooBtZ4bnCgs8KayPw",
+    authDomain: "web-workshop-registration-form.firebaseapp.com",
+    databaseURL: "https://web-workshop-registration-form.firebaseio.com",
+    projectId: "web-workshop-registration-form",
+    storageBucket: "web-workshop-registration-form.appspot.com",
+    messagingSenderId: "537957057441",
+    appId: "1:537957057441:web:ef55b56b3d5997c31381e0",
+    measurementId: "G-NB3E1VZQ1T"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+</script>
+
+<script>
+    function getdata(){
+        Firebase.database().ref("User").set({
+            firstname : document.getElementById("fname").value,
+            lastname : document.getElementById("lname").value,
+            email : document.getElementById("email").value,
+            mobileno : document.getElementById("mno").value,
+            profession : document.getElementById("Proffession").value
+        });
+    }
+</script>
+
+</body>
+
+</html>
